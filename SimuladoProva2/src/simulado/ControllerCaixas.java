@@ -8,10 +8,11 @@ import java.util.Map;
 
 public class ControllerCaixas {
 	
-	private Map <String ,Caixa> mapaCaixas;
+	private Map <String ,CaixaAbstract> mapaCaixas;
 	
 	public ControllerCaixas() {
-		this.mapaCaixas =  new LinkedHashMap<String, Caixa>();
+		this.mapaCaixas =  new LinkedHashMap<String, CaixaAbstract>();
+		
 	}
 	
 	
@@ -53,7 +54,7 @@ public class ControllerCaixas {
 	
 	public void modificar(String descUnica, String novaPersonalizacao) {
 		
-		Caixa caixa = this.mapaCaixas.get(descUnica);
+		CaixaAbstract caixa = this.mapaCaixas.get(descUnica);
 		caixa.modificar(novaPersonalizacao);
 		this.mapaCaixas.remove(descUnica);
 		this.mapaCaixas.put(novaPersonalizacao, caixa);
@@ -71,8 +72,8 @@ public class ControllerCaixas {
 	
 	public  boolean contem(String personalizacao, String formato) {
 		
-		for (Caixa caixa: this.mapaCaixas.values()) {
-			if (caixa.getFormato().equals(formato) || caixa.getPersonalizcao().equals(personalizacao)) {
+		for (CaixaAbstract caixa: this.mapaCaixas.values()) {
+			if (caixa.getPersonalizcao().equals(formato) || caixa.getPersonalizcao().equals(personalizacao)) {
 				return true;
 			}
 		}
@@ -86,7 +87,7 @@ public class ControllerCaixas {
 	
 		List listaInteresses = new ArrayList<String>();
 		
-		for (Caixa caixa: this.mapaCaixas.values()) {
+		for (CaixaAbstract caixa: this.mapaCaixas.values()) {
 			if(caixa.getPersonalizcao().equals(personalizacao)) {
 				listaInteresses.add(caixa.getDescUnica());
 			}
@@ -104,7 +105,7 @@ public class ControllerCaixas {
 	public int calcularRendimentos() {
 		int rendimento = 0;
 		
-		for (Caixa caixa: this.mapaCaixas.values()) {
+		for (CaixaAbstract caixa: this.mapaCaixas.values()) {
 			rendimento += caixa.calculaPreco();
 		}
 		

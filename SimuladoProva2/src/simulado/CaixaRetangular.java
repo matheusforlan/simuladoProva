@@ -1,26 +1,18 @@
 package simulado;
 
-public class CaixaRetangular implements Caixa{
+public class CaixaRetangular extends CaixaAbstract{
 	
-	private String descUnica;
-	private String personalizacao;
 	private int lado1;
 	private int lado2;
 	private String formato;
 
 	public CaixaRetangular(String descUnica, String personalizacao, int lado1, int lado2) {
+		super(descUnica, personalizacao);
 		
 		
-		this.descUnica = descUnica;
-		this.personalizacao = personalizacao;
 		this.lado1 = lado1;
 		this.lado2 = lado2;
 		this.formato = "Retangular";
-	}
-
-	@Override
-	public String toString() {
-	 return "Caixa com " + this.personalizacao + " custa " + calculaPreco() + "centavos. Formato" + this.formato;
 	}
 
 	@Override
@@ -29,15 +21,9 @@ public class CaixaRetangular implements Caixa{
 		return 10*areaTampa;
 	}
 	
-	public void setDescUnica(String descUnica) {
-		this.descUnica = descUnica;
-	}
 	
-	@Override
-	public void modificar(String novaPersonalizacao) {
-		this.descUnica = novaPersonalizacao;
-		
-	}
+	
+	
 	
 
 	@Override
@@ -47,15 +33,6 @@ public class CaixaRetangular implements Caixa{
 	}
 
 
-	@Override
-	public String getPersonalizcao() {
-		
-		return this.personalizacao;
-	}
-	
-	@Override
-	public String getDescUnica() {
-		return this.getDescUnica();
-	}
+
 
 }
