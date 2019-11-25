@@ -2,6 +2,7 @@ package simulado;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +12,10 @@ public class ControllerCaixas {
 	private Map <String ,CaixaAbstract> mapaCaixas;
 	
 	public ControllerCaixas() {
-		this.mapaCaixas =  new LinkedHashMap<String, CaixaAbstract>();
+		this.mapaCaixas =  new HashMap<String, CaixaAbstract>();
 		
 	}
-	
-	
+		
 	
 	public void cadastraCaixaPentagonal(String descUnica, String personalizacao, int lado) {
 		
@@ -27,7 +27,6 @@ public class ControllerCaixas {
 		this.mapaCaixas.put(descUnica, caixaPentagonal);
 		
 	}
-
 
 
 	public void cadastraCaixaRetangular(String descUnica, String personalizacao, int lado1, int lado2) {
@@ -66,6 +65,7 @@ public class ControllerCaixas {
 			this.mapaCaixas.remove(descUnica);
 			return true;
 		}
+		
 		return false;
 		
 	}
